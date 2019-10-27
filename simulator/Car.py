@@ -496,8 +496,8 @@ class World:
         if self.lidar_missing_in_turn_only:
             
             # add missing rays only in Region 2 (plus an extra 1m before it)
-            if self.car_dist_s > 0 and self.car_dist_s < self.hallWidth and\
-               self.car_dist_f <= self.hallWidth + 1:
+            if self.car_dist_s > 0 and self.car_dist_s < self.hallWidths[self.curHall] and\
+               self.car_dist_f <= self.hallWidths[(self.curHall + 1) % self.numHalls] + 1:
 
                 for ray in self.missing_indices:
                     data[ray] = LIDAR_RANGE                

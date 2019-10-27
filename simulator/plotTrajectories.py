@@ -100,12 +100,10 @@ def main(argv):
 
     numTrajectories = 100
 
-    numHalls = 4
-    hallWidth = 1.5
-    hallLength = 20
-
+    hallWidths = [1.5, 1.5, 1.5, 1.5]
+    hallLengths = [20, 20, 20, 20]
     turns = ['right', 'right', 'right', 'right']
-    car_dist_s = hallWidth/2.0
+    car_dist_s = hallWidths[0]/2.0
     car_dist_f = 9.9
     car_heading = 0
     episode_length = 70
@@ -118,7 +116,7 @@ def main(argv):
 
     num_unsafe = 0
 
-    w = World(numHalls, hallWidth, hallLength, turns,\
+    w = World(hallWidths, hallLengths, turns,\
               car_dist_s, car_dist_f, car_heading,\
               episode_length, time_step, lidar_field_of_view,\
               lidar_num_rays, lidar_noise, missing_lidar_rays, True)
