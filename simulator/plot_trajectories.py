@@ -5,88 +5,6 @@ from keras import models
 import matplotlib.pyplot as plt
 import sys
 
-def relu(x):
-    relu = np.maximum(0, x)
-
-    return relu
-
-#this is just for testing purposes
-def relu_predict(model, inputs):
-    weights = {}
-    offsets = {}
-
-    layerCount = 1
-
-    for layer in model.layers:
-        if len(layer.get_weights()) > 0:
-            weights[layerCount] = layer.get_weights()[0]
-            offsets[layerCount] = layer.get_weights()[1]
-
-            layerCount += 1
-
-    curNeurons = inputs
-
-    for layer in range(layerCount-1):
-        curNeurons = curNeurons.dot(weights[layer + 1]) + offsets[layer + 1]
-
-        if layer <= layerCount - 3:
-            curNeurons = relu(curNeurons)
-
-    return curNeurons
-
-#this is just for testing purposes
-def tanh_predict(model, inputs):
-    weights = {}
-    offsets = {}
-
-    layerCount = 1
-
-    for layer in model.layers:
-        
-        if len(layer.get_weights()) > 0:
-            weights[layerCount] = layer.get_weights()[0]
-            offsets[layerCount] = layer.get_weights()[1]
-
-            layerCount += 1
-
-    curNeurons = inputs
-
-    for layer in range(layerCount-1):
-        curNeurons = curNeurons.dot(weights[layer + 1]) + offsets[layer + 1]
-
-        curNeurons = np.tanh(curNeurons)
-
-    return curNeurons
-
-def sigmoid(x):
-    sigm = 1. / (1. + np.exp(-x))
-
-    return sigm
-
-def swish_predict(model, inputs):
-    weights = {}
-    offsets = {}
-
-    layerCount = 1
-
-    for layer in model.layers:
-        if len(layer.get_weights()) > 0:
-            weights[layerCount] = layer.get_weights()[0]
-            offsets[layerCount] = layer.get_weights()[1]
-
-            layerCount += 1
-
-    curNeurons = inputs
-
-    for layer in range(layerCount-1):
-        curNeurons = curNeurons.dot(weights[layer + 1]) + offsets[layer + 1]
-
-        if layer <= layerCount - 3:
-            curNeurons = curNeurons * sigmoid(curNeurons)
-            #curNeurons = relu(curNeurons)
-
-    return curNeurons
-
 def normalize(s):
     mean = [2.5]
     spread = [5.0]
@@ -111,7 +29,11 @@ def main(argv):
 
     lidar_field_of_view = 115
     lidar_num_rays = model.get_layer(index=0).input_shape[1]
+
+    # Change this to 0.1 or 0.2 to generate Figure 3 or 5 in the paper, respectively
     lidar_noise = 0.2
+
+    # Change this to 0 or 5 to generate Figure 3 or 5 in the paper, respectively
     missing_lidar_rays = 5
 
     num_unsafe = 0
