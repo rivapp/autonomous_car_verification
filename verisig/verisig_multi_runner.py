@@ -21,7 +21,7 @@ that the released tool works with.
 
 Example usage:
 
-python verisig_multi_runner.py ../dnns/tanh_21_m0_64x64_TD3_1.yml ../plant_models/dynamics_21.pickle ../plant_models/glue_21.pickle
+python verisig_multi_runner.py ../dnns/TD3_L21_64x64_C1.yml ../plant_models/dynamics_21.pickle ../plant_models/glue_21.pickle
 
 '''
 
