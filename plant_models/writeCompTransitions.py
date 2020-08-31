@@ -2,8 +2,8 @@ import numpy as np
 from six.moves import cPickle as pickle
 
 LIDAR_MAX_DISTANCE = 5 # in m
-LIDAR_RANGE = 120 # in degrees
-LIDAR_OFFSET = 8 # in degrees
+LIDAR_RANGE = 115 # in degrees
+LIDAR_OFFSET = 11.5 # in degrees
 NUM_RAYS = int(round((2 *  LIDAR_RANGE) / LIDAR_OFFSET))  + 1
 PIBY180 = np.pi / 180.0
 INPUT_CONST = 15

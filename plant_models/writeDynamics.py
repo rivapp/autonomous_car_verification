@@ -23,12 +23,11 @@ CAR_ACCEL_CONST = 1.633
 CAR_MOTOR_CONST = 0.2 # 45 MPH top speed (20 m/s) at 100 throttle
 
 LIDAR_MAX_DISTANCE = 5 # in m
-LIDAR_RANGE = 120 * np.pi / 180 # in radians
-LIDAR_OFFSET = 8 * np.pi / 180 # in radians
+LIDAR_RANGE = 115 * np.pi / 180 # in radians
+LIDAR_OFFSET = 11.5 * np.pi / 180 # in radians
 NUM_RAYS = int(round((2 *  LIDAR_RANGE) / LIDAR_OFFSET))  + 1
 
 print(NUM_RAYS)
-print("FUSCKSCASD")
 
 HALLWAY_WIDTH = 1.5
 HALLWAY_LENGTH = 20
